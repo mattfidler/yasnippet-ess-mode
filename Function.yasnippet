@@ -8,4 +8,4 @@
 # condition: (string= "S" ess-language)
 # group: Language Features
 # --
-function(${1:x}) ${3:{$0\}}
+function(${1:x}) ${3:`"{"`$0`"}"`}
