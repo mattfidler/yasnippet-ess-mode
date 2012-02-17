@@ -21,12 +21,12 @@ ${1:x}scale.components.ruler <- function(lim,...,by=1,
   s1 <- s1[!(s1 %in% c(s2,s3))];
   s <- c(s3,s2,s1);
   
-  ans$${1:$(if (string= text "x") "bottom" "left")}$ticks$at <- s
-  ans$${1:$(if (string= text "x") "bottom" "left")}$ticks$tck <- c(rep(1.5,length(s3)),rep(1,length(s2)),rep(0.5,length(s1)));
+  ans$${1:$(if (string= yas/text "x") "bottom" "left")}$ticks$at <- s
+  ans$${1:$(if (string= yas/text "x") "bottom" "left")}$ticks$tck <- c(rep(1.5,length(s3)),rep(1,length(s2)),rep(0.5,length(s1)));
   FUN <- match.fun(label.transform)
-  ans$${1:$(if (string= text "x") "bottom" "left")}$labels$labels <- c(sapply(s3,FUN),rep(" ",length(s2)+length(s1)));
-  ans$${1:$(if (string= text "x") "bottom" "left")}$labels$at <- s3
-  ans$${1:$(if (string= text "x") "bottom" "left")}$labels$check.overlap <- TRUE;
+  ans$${1:$(if (string= yas/text "x") "bottom" "left")}$labels$labels <- c(sapply(s3,FUN),rep(" ",length(s2)+length(s1)));
+  ans$${1:$(if (string= yas/text "x") "bottom" "left")}$labels$at <- s3
+  ans$${1:$(if (string= yas/text "x") "bottom" "left")}$labels$check.overlap <- TRUE;
   return(ans);
 }
 $0
