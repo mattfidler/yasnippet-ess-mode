@@ -2,4 +2,4 @@
 # name: Location (script)
 # key: loc.s
 # --
-script.name <- 
+script.name <- "`(buffer-file-name)`"
