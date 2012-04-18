@@ -11,7 +11,10 @@ ans <- $1scale.components.default(lim = lim, ....,)
 if (is.null(major.ticks)){
     cs <- ans$${1:$(if (string= yas/text "x") "bottom" "left")}$labels$at
     major.ticks <- unique(cs[-1]-cs[-length(cs)])
-    if (major.ticks %% 5 == 0){
+    if (major.ticks %% 2 == 0){
+      minor.ticks <- major.ticks/2
+      by <-  minor.ticks/2
+    } else if (major.ticks %% 5 == 0){
       minor.ticks <- major.ticks;
       by <- major.ticks/5;
     } else {
