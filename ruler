@@ -25,6 +25,9 @@ if (is.null(major.ticks)){
 $1lim1 <- round(lim/by,0)*by
 $1lim2 <- round(lim/minor.ticks,0)*minor.ticks
 $1lim3 <- round(lim/major.ticks,0)*major.ticks
+while ($1lim3[2] >= lim[2]){
+    $1lim3[2] <- $1lim3[2]-major.ticks;
+  }
 
 s1 <- seq($1lim1[1],$1lim1[2],by=by);
 s2 <- seq($1lim2[1],$1lim2[2],by=minor.ticks)
@@ -43,4 +46,3 @@ ans$${1:$(if (string= yas/text "x") "bottom" "left")}$labels$at <- s3
 ans$${1:$(if (string= yas/text "x") "bottom" "left")}$labels$check.overlap <- TRUE;
 return(ans);
 }
-$0
