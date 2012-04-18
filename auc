@@ -11,5 +11,5 @@ ret <- 0
 for (i in 2:length(y)){
 ret <- ret + (y[i-1]+y[i])/2*(x[i]-x[i-1])
 }
-return(auc)
+return(ret)
 }
