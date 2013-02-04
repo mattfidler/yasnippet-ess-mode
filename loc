@@ -1,4 +1,6 @@
+# -*- mode: snippet -*-
 # key: loc
 # name: loc
+#
 # --
-## File: `(buffer-file-name)`
+## File: `(yas-ess-bfn)`
