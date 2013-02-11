@@ -1,0 +1,49 @@
+# name: One Compartment
+# key: 1c
+# --
+cmt.1 <- function(t,dose=0.5,k=log(2)/5.5,vd = 4,mw = 1,use.nM = FALSE,
+                 tinf = NULL,freq=NULL,dose.times = NULL,scale=1e3){
+  if (!is.null(freq) | !is.null(dose.times)){
+    if (is.null(dose.times)){
+      dose.times <- seq(0,max(t),by=freq);
+    }
+    ret <- rep(0,length(t))
+    
+    if (length(dose) == 1){
+      doses <-  rep(dose,length.out = length(dose.times))
+    } else {
+      doses <- dose
+      if (length(doses) < length(dose.times)){
+        doses <-  c(doses,rep(0,length.out = length(dose.times)-length(doses)))
+      }
+    }
+    for (i in dose.times){
+      if (any(t >= i)){
+        w <- which(t >= i);
+        w2 <-  which(dose.times == i);
+        if (length(tinf) >= w2){
+          curr.tinf <- tinf[w2]
+          if (curr.tinf <= 0){
+            curr.tinf <- NULL
+          }
+        } else {
+          curr.tinf <-  NULL
+        }
+        ret[w] <- ret[w]+cmt.1(t[w]-i,dose = doses[w2], k = k, vd = vd , mw = mw, use.nM = use.nM,
+                              tinf = curr.tinf, scale = scale)
+      }
+    }
+    return(ret);
+  } else if (!is.null(tinf)){
+    ## separate based on time of infusion
+    return((dose/tinf)/(vd*k)*(1-exp(-k*sapply(t,min,tinf)))*exp(-k*(sapply(t,max,tinf)-tinf))*scale)
+  } else {
+    cp.mg.ml <- dose/vd*exp(-k*t)
+    if (use.nM){
+      cp.nM <- cp.mg.ml/mw/10e-9 ## nMolar
+      return(cp.nM);
+    } else {
+      return(cp.mg.ml*scale);
+    }
+  }
+}
