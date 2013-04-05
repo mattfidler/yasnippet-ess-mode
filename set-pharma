@@ -3,6 +3,8 @@
 # --
 
 library(colorspace)
+library(lattice)
+library(grid)
 
 set.pharma <-  function(run = NULL){
   
@@ -75,3 +77,4 @@ set.pharma <-  function(run = NULL){
     return(invisible())
   }
 }
+set.pharma()
