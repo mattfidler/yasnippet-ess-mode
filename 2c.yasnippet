@@ -75,7 +75,7 @@ cmt.2 <- function(t = NULL,tinf = NULL,
     if (!is.null(cl)) {
       if (is.null(v)){
         stop("When cl is specified, v should be specified as well.")
-      } else if (if.null(q)){
+      } else if (is.null(q)){
         stop("When cl is specified, q should be specified as well.")
       }
       k <- cl/v;
