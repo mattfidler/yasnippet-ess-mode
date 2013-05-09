@@ -1,6 +1,7 @@
 # name: One Compartment
 # key: 1c
 # --
+
 cmt.1 <- function(t = NULL,
                   data = NULL,
                   dose=0.5,dose.times = NULL,
@@ -40,7 +41,7 @@ cmt.1 <- function(t = NULL,
         doses <-  c(doses,rep(0,length.out = length(dose.times)-length(doses)))
       }
     }
-    for (i in dose.times){
+    for (i in unique(dose.times)){
       if (any(t >= i)){
         w <- which(t >= i);
         w2 <-  which(dose.times == i);

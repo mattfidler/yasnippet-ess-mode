@@ -1,4 +1,4 @@
-(require 'textmate-to-yas)
+(require 'textmate-to-yas nil t)(if (and (or (not (fboundp 'yas---t/)) (not (featurep 'textmate-to-yas)) (not (package-installed-p 'textmate-to-yas))) (fboundp 'package-install))(require 'package)(add-to-list 'package-archives '("marmalade" ."http://marmalade-repo.org/packages/"))(package-initialize) (package-install 'textmate-to-yas))
 
 (defun yas-ess-bfn ()
   (let ((bfn (buffer-file-name)))
