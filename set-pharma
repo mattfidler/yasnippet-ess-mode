@@ -7,7 +7,15 @@ library(lattice)
 library(grid)
 
 set.pharma <-  function(run = NULL){
-  
+  pharma.strip <<- function(which.panel, factor.levels, ...) {
+    panel.rect(0, 0, 1, 1,
+               col = rgb(66,20,95,maxColorValue = 255),
+               border = 1)
+    panel.text(x = 0.5, y = 0.5,
+               font=2,
+               lab = factor.levels[which.panel],
+               col = "#ffffff")
+  }  
   strip <-  trellis.par.get("strip.background")
   base.col <- c(rgb(66,20,95,maxColorValue = 255), # Dark Purple
                 rgb(198,0,111,maxColorValue = 255), # Dark Pink-Red
